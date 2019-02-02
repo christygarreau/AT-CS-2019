@@ -1,27 +1,30 @@
 import processing.core.PApplet;
+import java.util.ArrayList;
 
 public class CreatureWorldThing {
     private int id;
     private int x;
     private int y;
-    private int direction;
     private int myColor;
     private int heroWidth;
     private int heroHeight;
-    private float xVelocity;
-    private float yVelocity;
+    private int speed;
+    private int jumpStrength;
+    private int weight;
+    private float velocity;
     private boolean amTarget;
 
-    public CreatureWorldThing(int _id, int _x, int _y, int _direction, int _myColor, int _heroWidth, int _heroHeight, float _xVelocity, float _yVelocity, boolean _amTarget){ //contructor sets up initial state of object
+    public CreatureWorldThing(int _id, int _x, int _y, int _myColor, int _heroWidth, int _heroHeight, int _speed, int _jumpStrength, int _weight, float _velocity, boolean _amTarget){
         id = _id;
         x = _x;
         y = _y;
-        direction = _direction;
         myColor = _myColor;
         heroWidth = _heroWidth;
         heroHeight = _heroHeight;
-        xVelocity = _xVelocity;
-        yVelocity = _yVelocity;
+        speed = _speed;
+        jumpStrength = _jumpStrength;
+        weight = _weight;
+        velocity = _velocity;
         amTarget = _amTarget;
     }
     public void display(){
@@ -32,28 +35,49 @@ public class CreatureWorldThing {
     }
 
     public void behave(){
-        if(getX()+getHeroWidth() == CreatureWorldMaster.getApp().width || getX() == 0){
-            xVelocity = 0;
+        if (CreatureWorldMaster.getApp().key == 'd'){
+            System.out.println("ass eat time");
+            x += speed;
+        } else if(CreatureWorldMaster.getApp().key == 'a'){
+            x -= speed;
+        }
+        if (CreatureWorldMaster.getApp().key == 32 && y == CreatureWorldMaster.getApp().height - heroHeight){
+            jumpStrength = 10;
+            y -= jumpStrength;
+            jumpStrength -= weight;
+        }
+        if (y >= CreatureWorldMaster.getApp().height - heroHeight){
+            y = CreatureWorldMaster.getApp().height - heroHeight;
+        }
+
+    }
+
+    public void hewwo(char key1) {
+        if (key1 == 'd'){
+            x += speed;
+        } else if(key1 == 'a'){
+            x -= speed;
+        }
+        if (key1 == 32 && y == CreatureWorldMaster.getApp().height - heroHeight){
+            jumpStrength = 10;
+            y -= jumpStrength;
+            jumpStrength -= weight;
+        }
+        if (y >= CreatureWorldMaster.getApp().height - heroHeight){
+            y = CreatureWorldMaster.getApp().height - heroHeight;
         }
     }
-    public void interact(CreatureWorldThing[] things){
 
+    public void interact(ArrayList<CreatureWorldThing> things){
+        //implement later
     }
-
 
     public void keyPressed(){
         //leave empty
     }
-
     public void keyReleased(){
         //leave empty
     }
-/*
-public void checkAmTarget(){
- for(int i = getID(); i < 3; i++){
-   //
- }
-}*/
 
     public int getX(){
         return x;
@@ -61,23 +85,15 @@ public void checkAmTarget(){
     public void setX(int _x){
         x = _x;
     }
-    public int getY(){
-        return y;
-    }
+    public int getY(){ return y; }
     public void setY(int _y){
         y = _y;
     }
-    public float getXVelocity(){
-        return xVelocity;
+    public float getVelocity(){
+        return velocity;
     }
-    public void setXVelocity(float _xVelocity){
-        xVelocity = _xVelocity;
-    }
-    public int getDirection(){
-        return direction;
-    }
-    public void setDirection(int _direction){
-        direction = _direction;
+    public void setXVelocity(float _velocity){
+        velocity = _velocity;
     }
     public int getID(){
         return id;
@@ -100,20 +116,11 @@ public void checkAmTarget(){
     public void setHeroHeight(int _heroHeight){
         heroHeight = _heroHeight;
     }
-
     public boolean getAmTarget(){
         return amTarget;
     }
-
     public void setAmTarget(boolean _amTarget){
         amTarget = _amTarget;
     }
-    public float getYVelocity(){
-        return yVelocity;
-    }
-    public void setYVelocity(float _yVelocity){
-        yVelocity = _yVelocity;
-    }
-
 }
 
