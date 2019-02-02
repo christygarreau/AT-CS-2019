@@ -49,7 +49,7 @@ public class CreatureWorldThing {
         if (y >= CreatureWorldMaster.getApp().height - heroHeight){
             y = CreatureWorldMaster.getApp().height - heroHeight;
         }
-
+//hi
     }
 
     public void hewwo(char key1) {

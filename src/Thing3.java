@@ -21,5 +21,5 @@ public class Thing3 extends CreatureWorldThing{
     }
 
     public void interact(ArrayList<CreatureWorldThing> things){
-    }
+    }//hi
 }

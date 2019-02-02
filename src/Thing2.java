@@ -6,7 +6,7 @@ public class Thing2 extends CreatureWorldThing{
     public Thing2(int _id){
         super(_id, CreatureWorldMaster.getApp().width/2-20, CreatureWorldMaster.getApp().height-15, CreatureWorldMaster.getApp().color(248, 167, 56), 15, 15, 10,  10, 5, 1, false);
     }
-
+//hi
     public void display(){
         PApplet app = CreatureWorldMaster.getApp();
         app.noStroke();
